@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.coder</groupId>
-	<artifactId>java-coder-project</artifactId>
+	<artifactId>java_coder_project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>java-coder-project</name>
+	<name>java_coder_project</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
