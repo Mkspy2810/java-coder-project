@@ -1,0 +1,31 @@
+Table clients {
+    id INT [pk]
+    name VARCHAR(75)
+    lastname VARCHAR(75)
+    docnumber VARCHAR(11)
+}
+
+Table products {
+    id INT [pk]
+    description VARCHAR(150)
+    code VARCHAR(50)
+    stock INT
+    price DECIMAL(10, 2)
+}
+
+Table invoice {
+    id INT [pk]
+    client_id INT [ref: > clients.id]
+    created_at TIMESTAMP
+    total DECIMAL(10, 2)
+}
+
+Table invoice_details {
+    invoice_id INT [ref: > invoice.id]
+    invoice_detail_id INT [pk]
+    amount INT
+    product_id INT [ref: > products.id]
+    price DECIMAL(10, 2)
+}
+
+// https://dbdiagram.io/d/66c1995e8b4bb5230e64a15e
