@@ -1,8 +1,10 @@
-package edu.coder.java_coder_project.entity;
+package edu.coder.java_coder_project.model;
 
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Entity class representing a product in the system.
@@ -27,6 +29,7 @@ public class Product {
   @Column(name = "PRICE", nullable = false)
   private double price;
 
+  @JsonIgnore
   @OneToMany(mappedBy = "product")
   private List<InvoiceDetail> invoiceDetails;
 

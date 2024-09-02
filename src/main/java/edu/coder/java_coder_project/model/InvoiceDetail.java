@@ -1,6 +1,8 @@
-package edu.coder.java_coder_project.entity;
+package edu.coder.java_coder_project.model;
 
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
 
@@ -15,6 +17,7 @@ public class InvoiceDetail {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int invoiceDetailId;
 
+  @JsonBackReference("invoice-invoiceDetails")
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "INVOICE_ID", nullable = false)
   private Invoice invoice;

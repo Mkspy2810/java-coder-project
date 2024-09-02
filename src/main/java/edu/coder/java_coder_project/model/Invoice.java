@@ -1,11 +1,12 @@
-package edu.coder.java_coder_project.entity;
+package edu.coder.java_coder_project.model;
 
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Entity class representing an invoice in the system.
@@ -18,6 +19,7 @@ public class Invoice {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  @JsonBackReference("client-invoices")
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "CLIENT_ID", nullable = false)
   private Client client;
@@ -28,6 +30,7 @@ public class Invoice {
   @Column(name = "TOTAL", nullable = false)
   private double total;
 
+  @JsonManagedReference("invoice-invoiceDetails")
   @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<InvoiceDetail> invoiceDetails = new ArrayList<>();
 

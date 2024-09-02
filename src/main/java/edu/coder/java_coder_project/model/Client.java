@@ -1,10 +1,10 @@
-package edu.coder.java_coder_project.entity;
+package edu.coder.java_coder_project.model;
 
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Entity class representing a client in the system.
@@ -26,6 +26,7 @@ public class Client {
   @Column(name = "DOCNUMBER", length = 11, nullable = false, unique = true)
   private String docnumber;
 
+  @JsonManagedReference("client-invoices")
   @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<Invoice> invoices = new ArrayList<>();;
 
